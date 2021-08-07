@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Detalle</title>
+<style>
+input {margin: 8px; border-radius: 5px; }
+body {padding: 2%}
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+</style>
+</head>
+<body>
+Detalle de atleta:
+<form action="#" th:action="@{/actualizarAtleta/{id}(id=${atletaId})}" th:object="${atleta}" method="post">
+    <label for="nombre">Nombre</label>
+    <input type="text" th:field="*{nombre}" id="nombre" disabled>
+    
+    <label for="primerApellido">Primer apellido</label>
+    <input type="text" th:field="*{primerApellido}" id="primerApellido" disabled>
+    
+    <label for="segundoApellido">Segundo apellido</label>
+    <input type="text" th:field="*{segundoApellido}" id="segundoApellido" disabled>
+    
+    <label for="fechaNacimiento">Fecha de nacimiento</label>
+    <input type="text" th:field="*{fechaNacimiento}" id="fechaNacimiento" disabled><br>
+    
+    <label for="deporte">Deporte</label>
+    <input type="text" th:field="*{deporte}" id="deporte" disabled>
+    
+    <label for="estatura">Estatura</label>
+    <input type="text" th:field="*{estatura}" id="estatura" disabled>
+    
+    <label for="peso">Peso</label>
+    <input type="text" th:field="*{peso}" id="peso" required onChange="enableUpdateBtn()">
+    
+    <label for="genero">Género</label>
+    <input type="text" th:field="*{genero}" id="genero" disabled> <br>
+    
+    <label for="direccion">Dirección</label>
+    <input type="text" th:field="*{direccion}" id="direccion" required onChange="enableUpdateBtn()">
+    
+    <label for="provincia">Provincia</label>
+    <input type="text" th:field="*{provincia}" id="provincia" required onChange="enableUpdateBtn()">
+    
+    <label for="canton">Cantón</label>
+    <input type="text" th:field="*{canton}" id="canton" required onChange="enableUpdateBtn()">
+    
+    <label for="distrito">Distrito</label>
+    <input type="text" th:field="*{distrito}" id="distrito" required onChange="enableUpdateBtn()"><br>
+    
+    <label for="contacto">Contacto</label>
+    <input type="text" th:field="*{contacto}" id="contacto" required onChange="enableUpdateBtn()"><br>
+    
+    <input type="submit" value="Actualizar Atleta" disabled id="updateBtn">
+    <a href="/listar">Regresar</a>
+</form>
+
+</body>
+<script>
+function enableUpdateBtn(event) {
+	document.getElementById("updateBtn").disabled = false;
+}
+</script>
+</html>

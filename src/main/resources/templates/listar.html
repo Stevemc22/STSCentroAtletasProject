@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	</meta>
+	<meta http-equiv="Content-Type" content="text/html">
+	</meta>
+	<title>Atletas</title>
+	<style>
+		body {
+			padding: 2%
+		}
+	</style>
+</head>
+
+<body>
+
+	<form action="#" th:action="@{/listar}" th:object="${atleta}" method="post">
+		<input type="text" th:field="*{nombre}" id="nombre" required>
+		<input type="submit" value="Buscar">
+	</form>
+
+	<div>
+		<h1>Lista de atletas</h1>
+		<ol>
+			<div th:each="entry : ${atletas}">
+				<li>
+					<span th:text="${entry.nombre}"></span>
+					<span th:text="${entry.primerApellido}"></span>
+					<span th:text="${entry.segundoApellido}"></span>
+					<ul>
+						<li>
+							Deporte: <span th:text="${entry.deporte}"></span>
+						</li>
+						<li>
+							Historial IMC: <span th:text="${entry.historialIMC.size()}">No hay historial</span>
+						</li>
+						<li>
+							<a th:href="@{/verDetalle/{id}(id= ${entry.id})}">Ver detalles</a>
+						</li>
+						<li>
+							<a th:href="@{/listarIMC/{id}(id= ${entry.id})}">Ver historial IMC</a>
+						</li>
+					</ul>
+				</li> <br>
+			</div>
+		</ol>
+		<a href="/">Regresar</a>
+	</div>
+</body>
+
+</html>

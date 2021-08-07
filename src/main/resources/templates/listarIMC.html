@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	</meta>
+	<meta http-equiv="Content-Type" content="text/html">
+	</meta>
+	<title>Indice de masa corporal</title>
+	<style>
+	body {padding: 2%}
+	</style>
+</head>
+
+<body>
+	<div>
+	<h2>Historial de IMC del atleta</h2>
+	<h3 th:text="${nombreAtleta}"></h3>
+		<ol>
+			<div th:each="entry : ${historialIMC}">
+				<li>
+					IMC: <span th:text="${entry.IMC}"></span><br>
+					Fecha de registro: <span th:text="${entry.fecha}"></span>
+				</li><br>
+			</div>
+		</ol>
+		<a href="javascript:history.go(-1)">Regresar</a>
+	</div>
+</body>
+
+</html>
